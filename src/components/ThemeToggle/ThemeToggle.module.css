@@ -1,0 +1,30 @@
+.toggle {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	align-items: center;
+	width: 113px;
+	/* height: 30px; */
+	padding: 4px;
+	border: 1px solid #4B4B98;
+	border-radius: 999px;
+	background: transparent;
+	color: var(--text);
+	cursor: pointer;
+}
+
+.toggle span {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+
+	border-radius: 999px;
+	height: 28px;
+    font-size: 12px;
+    font-weight: 600;
+	line-height: 1;
+}
+
+.active {
+	background: var(--text);
+	color: var(--page-bg);
+}

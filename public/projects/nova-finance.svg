@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="875" viewBox="0 0 1400 875">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#071226"/><stop offset=".56" stop-color="#111b45"/><stop offset="1" stop-color="#050814"/></linearGradient>
+    <radialGradient id="glow" cx="54%" cy="38%" r="66%"><stop stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".56" numOctaves="3"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .06"/></feComponentTransfer></filter>
+  </defs>
+  <rect width="1400" height="875" fill="url(#bg)"/>
+  <rect width="1400" height="875" fill="url(#glow)"/>
+  
+      <g transform="translate(134 238)"><text x="0" y="92" fill="#fff" font-family="Montserrat, Arial" font-size="72" font-weight="800">Smart finance</text><text x="0" y="168" fill="#fff" font-family="Montserrat, Arial" font-size="72" font-weight="800">for modern life.</text><rect x="0" y="226" width="236" height="62" rx="31" fill="#665cff"/><rect x="260" y="226" width="214" height="62" rx="31" fill="rgba(255,255,255,.11)" stroke="rgba(255,255,255,.22)"/><rect x="672" y="18" width="430" height="468" rx="34" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.2)"/><rect x="722" y="68" width="190" height="24" rx="12" fill="rgba(255,255,255,.34)"/><rect x="722" y="118" width="312" height="70" rx="22" fill="rgba(255,255,255,.08)"/><g><rect x="742" y="358" width="28" height="80" rx="14" fill="#46c2ff"/><rect x="790" y="334" width="28" height="104" rx="14" fill="#7c6dff"/><rect x="838" y="310" width="28" height="128" rx="14" fill="#46c2ff"/><rect x="886" y="286" width="28" height="152" rx="14" fill="#7c6dff"/><rect x="934" y="262" width="28" height="176" rx="14" fill="#46c2ff"/></g><circle cx="1006" cy="268" r="74" fill="none" stroke="#7c6dff" stroke-width="24"/><circle cx="1006" cy="268" r="74" fill="none" stroke="#46c2ff" stroke-width="24" stroke-dasharray="220 260" transform="rotate(-72 1006 268)"/></g>
+  <rect width="1400" height="875" filter="url(#grain)" opacity=".38"/>
+  <text x="82" y="820" fill="#ffffff" opacity=".82" font-family="Montserrat, Arial, sans-serif" font-size="34" font-weight="800">Nova Finance</text>
+  <text x="82" y="858" fill="#ffffff" opacity=".52" font-family="Montserrat, Arial, sans-serif" font-size="20" font-weight="700">Modern fintech platform</text>
+</svg>

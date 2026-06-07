@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="875" viewBox="0 0 1400 875">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#dcecff"/><stop offset=".56" stop-color="#f8f2e8"/><stop offset="1" stop-color="#d7b48b"/></linearGradient>
+    <radialGradient id="glow" cx="54%" cy="38%" r="66%"><stop stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".56" numOctaves="3"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .06"/></feComponentTransfer></filter>
+  </defs>
+  <rect width="1400" height="875" fill="url(#bg)"/>
+  <rect width="1400" height="875" fill="url(#glow)"/>
+  
+      <path d="M0 520 C210 405 355 430 530 328 C744 202 982 212 1400 76 L1400 875 L0 875 Z" fill="#c88955" opacity=".28"/>
+      <g transform="translate(170 245)">
+        <rect x="132" y="224" width="830" height="322" rx="22" fill="#f2eee7"/>
+        <rect x="268" y="92" width="682" height="370" rx="20" fill="#bf7d4c"/>
+        <rect x="490" y="0" width="374" height="472" rx="24" fill="#faf7ef"/>
+        <rect x="42" y="318" width="1024" height="252" rx="25" fill="#fff"/>
+        <g fill="#26313c" opacity=".82"><rect x="100" y="342" width="88" height="50" rx="7"/><rect x="480" y="342" width="88" height="50" rx="7"/><rect x="670" y="412" width="88" height="50" rx="7"/><rect x="860" y="482" width="88" height="50" rx="7"/><rect x="292" y="482" width="88" height="50" rx="7"/></g>
+        <g fill="#ffd08a"><rect x="292" y="342" width="88" height="50" rx="7"/><rect x="670" y="342" width="88" height="50" rx="7"/><rect x="100" y="412" width="88" height="50" rx="7"/><rect x="480" y="482" width="88" height="50" rx="7"/><rect x="860" y="412" width="88" height="50" rx="7"/></g>
+        <rect x="120" y="288" width="856" height="20" rx="10" fill="#26313c" opacity=".28"/>
+        <circle cx="172" cy="562" r="60" fill="#62704e" opacity=".72"/><circle cx="1002" cy="562" r="68" fill="#53674a" opacity=".52"/>
+      </g>
+  <rect width="1400" height="875" filter="url(#grain)" opacity=".38"/>
+  <text x="82" y="820" fill="#07152d" opacity=".82" font-family="Montserrat, Arial, sans-serif" font-size="34" font-weight="800">Grand Residence</text>
+  <text x="82" y="858" fill="#07152d" opacity=".52" font-family="Montserrat, Arial, sans-serif" font-size="20" font-weight="700">Premium real estate</text>
+</svg>

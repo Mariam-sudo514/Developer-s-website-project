@@ -1,0 +1,9 @@
+.page {
+	min-height: 5880px;
+}
+
+@media (max-width: 920px) {
+	.page {
+		min-height: auto;
+	}
+}

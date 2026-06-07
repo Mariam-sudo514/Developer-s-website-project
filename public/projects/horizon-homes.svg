@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="875" viewBox="0 0 1400 875">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#202b33"/><stop offset=".56" stop-color="#56636b"/><stop offset="1" stop-color="#0b1116"/></linearGradient>
+    <radialGradient id="glow" cx="54%" cy="38%" r="66%"><stop stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".56" numOctaves="3"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .06"/></feComponentTransfer></filter>
+  </defs>
+  <rect width="1400" height="875" fill="url(#bg)"/>
+  <rect width="1400" height="875" fill="url(#glow)"/>
+  
+      <g transform="translate(118 230)"><text x="0" y="84" fill="#fff" font-family="Montserrat, Arial" font-size="70" font-weight="800">Find a home</text><text x="0" y="158" fill="#fff" font-family="Montserrat, Arial" font-size="70" font-weight="800">that fits your life.</text><rect x="0" y="238" width="540" height="82" rx="41" fill="#fff" opacity=".96"/><circle cx="64" cy="279" r="20" fill="#d7a861"/><rect x="110" y="260" width="170" height="28" rx="14" fill="#cfd5dc"/><rect x="318" y="260" width="150" height="28" rx="14" fill="#cfd5dc"/><g transform="translate(590 -18)"><rect y="248" width="654" height="296" rx="24" fill="#1d242b"/><rect x="48" y="92" width="550" height="330" rx="24" fill="#c1a07b"/><path d="M20 230 L324 0 L628 230 Z" fill="#27313b"/><path d="M206 230 L428 66 L646 230 Z" fill="#101820"/><g><rect x="76" y="276" width="78" height="58" rx="8" fill="#ffd28a"/><rect x="212" y="276" width="78" height="58" rx="8" fill="#23313d"/><rect x="348" y="276" width="78" height="58" rx="8" fill="#ffd28a"/><rect x="484" y="276" width="78" height="58" rx="8" fill="#23313d"/><rect x="76" y="362" width="78" height="58" rx="8" fill="#23313d"/><rect x="212" y="362" width="78" height="58" rx="8" fill="#ffd28a"/><rect x="348" y="362" width="78" height="58" rx="8" fill="#23313d"/><rect x="484" y="362" width="78" height="58" rx="8" fill="#ffd28a"/></g><rect x="400" y="292" width="122" height="250" rx="18" fill="#151d24"/></g></g>
+  <rect width="1400" height="875" filter="url(#grain)" opacity=".38"/>
+  <text x="82" y="820" fill="#ffffff" opacity=".82" font-family="Montserrat, Arial, sans-serif" font-size="34" font-weight="800">Horizon Homes</text>
+  <text x="82" y="858" fill="#ffffff" opacity=".52" font-family="Montserrat, Arial, sans-serif" font-size="20" font-weight="700">Real estate platform</text>
+</svg>

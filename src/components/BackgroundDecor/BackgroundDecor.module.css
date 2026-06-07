@@ -1,0 +1,28 @@
+/* components/BackgroundDecor/BackgroundDecor.module.css */
+
+.backgroundDecor {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background-repeat: no-repeat, no-repeat;
+  background-position: top center, bottom center;
+  background-size: 100vw auto, 100vw auto;
+}
+
+:global([data-theme='light']) .backgroundDecor {
+  background-image: url('/bgImgToplight.svg');
+}
+
+/* :global([data-theme='light']) .backgroundDecor {
+  background-image: url('/bgImgToplight.svg'), url('/bgImgBottomlight.svg');
+} */
+
+:global([data-theme='dark']) .backgroundDecor {
+  background-image: url('/bgImgTopdark.svg');
+}
+
+/* :global([data-theme='dark']) .backgroundDecor {
+  background-image: url('/bgImgTopdark.svg'), url('/bgImgBottomdark.svg');
+} */
