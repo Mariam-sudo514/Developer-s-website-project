@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import ButtonLink from '@/components/Shared/ButtonLink/ButtonLink';
 import ContactButton from '../ContactButton/ContactButton';
 import ProjectCard from './ProjectCard';
 import styles from './ProjectsPage.module.css';
@@ -14,9 +14,9 @@ const ProjectsPage = () => {
 					A collection of recent work across industries. Thoughtful design,
 					clean code, and meaningful results.
 				</p>
-				<Link className={styles.heroButton} href="/contacts">
+				<ButtonLink href="/contacts" variant="primary">
 					Start a project <span aria-hidden="true">→</span>
-				</Link>
+				</ButtonLink>
 			</section>
 
 			<section className={styles.projects} aria-label="Selected projects">

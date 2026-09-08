@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import ButtonLink from '@/components/Shared/ButtonLink/ButtonLink';
 import {
 	FiClock,
 	FiCode,
@@ -127,11 +127,11 @@ const faqProcess = [
 	},
 ];
 
-const PageButton = ({ href, children, variant = 'primary' }) => (
-	<Link className={`${styles.button} ${styles[variant]}`} href={href}>
+const PageButton = ({ href, children, variant = 'primary', className = '' }) => (
+	<ButtonLink className={className} href={href} variant={variant}>
 		{children}
 		<FaArrowRightLong aria-hidden="true" />
-	</Link>
+	</ButtonLink>
 );
 
 const Hero = ({ label, title, text, children }) => (
