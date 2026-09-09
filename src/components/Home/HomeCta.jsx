@@ -5,9 +5,9 @@ const HomeCta = () => {
 	return (
 		<section className={styles.cta}>
 			<div>
-				<h2>Let's create something elegant together</h2>
+				<h2>Let&apos;s create something elegant together</h2>
 				<p>
-					Have a project in mind or just want to say hello? I'd love to hear
+					Have a project in mind or just want to say hello? I&apos;d love to hear
 					from you.
 				</p>
 			</div>

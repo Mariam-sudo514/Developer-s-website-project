@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "open http://localhost:3000 & next dev --turbopack",
     "build": "next build --turbopack",
-    "start": "next start"
+    "start": "next start",
+    "lint": "eslint ."
   },
   "dependencies": {
     "next": "15.5.25",
@@ -17,5 +18,10 @@
     "next@15.5.25": {
       "postcss": "8.5.23"
     }
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "3.3.7",
+    "eslint": "9.39.5",
+    "eslint-config-next": "15.5.25"
   }
 }

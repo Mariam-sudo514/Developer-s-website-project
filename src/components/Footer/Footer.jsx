@@ -1,11 +1,12 @@
+import Link from 'next/link';
 import styles from './Footer.module.css';
 
 const Footer = () => {
 	return (
 		<footer className={styles.footer}>
-			<a className={styles.logo} href="/">
+			<Link className={styles.logo} href="/">
 				Maria.dev
-			</a>
+			</Link>
 			<a className={styles.email} href="mailto:hello@maria.dev">
 				hello@maria.dev
 			</a>

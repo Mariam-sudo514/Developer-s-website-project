@@ -175,7 +175,7 @@ export const AboutPageContent = () => (
 			title="Thoughtful design. Clean code. Human-centered experiences."
 			text="I'm Maria, a frontend developer and designer focused on creating elegant, responsive websites for brands that value detail, clarity, and intentional experiences."
 		>
-			<PageButton href="/contacts">Let's work together</PageButton>
+			<PageButton href="/contacts">Let&apos;s work together</PageButton>
 			<PageButton href="/#selected-work" variant="secondary">
 				View selected work
 			</PageButton>
@@ -365,8 +365,8 @@ export const FaqPageContent = () => (
 				<IconBadge icon={FiHelpCircle} />
 				<h2>Need something specific?</h2>
 				<p>
-					If you have a question that isn't covered here or want to discuss
-					your project, I'm happy to help.
+					If you have a question that isn&apos;t covered here or want to discuss
+					your project, I&apos;m happy to help.
 				</p>
 				<PageButton href="/contacts" variant="secondary">
 					Contact me

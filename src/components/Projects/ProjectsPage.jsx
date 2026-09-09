@@ -33,7 +33,7 @@ const ProjectsPage = () => {
 
 			<section className={styles.cta}>
 				<div>
-					<h2>Have a project in mind? Let's create something exceptional.</h2>
+					<h2>Have a project in mind? Let&apos;s create something exceptional.</h2>
 					<p>
 						I help brands and startups bring ideas to life through elegant
 						design and performance.
