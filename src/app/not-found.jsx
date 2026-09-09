@@ -1,4 +1,4 @@
-import styles from '@/components/shared/SimplePage.module.css';
+import styles from '@/components/Shared/SimplePage.module.css';
 
 const NotFound = () => {
 	return (

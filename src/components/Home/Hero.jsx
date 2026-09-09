@@ -1,4 +1,4 @@
-import ButtonLink from './ButtonLink';
+import ButtonLink from '@/components/Shared/ButtonLink/ButtonLink';
 import styles from './Hero.module.css';
 
 const Hero = () => {
