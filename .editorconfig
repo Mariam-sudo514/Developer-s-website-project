@@ -12,3 +12,7 @@ trim_trailing_whitespace = true
 # Специфические настройки для файлов с определёнными расширениями (если необходимо)
 [*.md]
 trim_trailing_whitespace = false
+
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2
