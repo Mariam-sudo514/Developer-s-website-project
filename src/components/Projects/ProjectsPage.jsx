@@ -4,6 +4,16 @@ import ProjectCard from './ProjectCard';
 import styles from './ProjectsPage.module.css';
 import { projectsData } from './projectsData';
 
+// Match the grid, container width and ProjectCard padding.
+const projectImageSizes = [
+	'(max-width: 560px) min(480px, calc(100vw - 72px))',
+	'(max-width: 700px) calc(100vw - 88px)',
+	'(max-width: 920px) min(298px, calc(50vw - 82px))',
+	'(max-width: 1100px) calc(50vw - 98px)',
+	'(max-width: 1200px) min(276px, calc((100vw - 276px) / 3))',
+	'min(384px, calc((100vw - 360px) / 3))',
+].join(', ');
+
 const ProjectsPage = () => {
 	return (
 		<div className={styles.page}>
@@ -25,6 +35,7 @@ const ProjectsPage = () => {
 						<ProjectCard
 							key={project.slug}
 							project={project}
+							imageSizes={projectImageSizes}
 							priority={index < 3}
 						/>
 					))}
