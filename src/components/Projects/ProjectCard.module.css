@@ -29,6 +29,8 @@
 }
 
 .media {
+	position: relative;
+	flex-shrink: 0;
 	overflow: hidden;
 	aspect-ratio: 16 / 10;
 	border: 1px solid var(--border-soft);

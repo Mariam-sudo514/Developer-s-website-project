@@ -1,8 +1,14 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import styles from './ProjectCard.module.css';
 
-const ProjectCard = ({ project, priority = false, className = '' }) => {
+const ProjectCard = ({
+	project,
+	priority = false,
+	className = '',
+	imageSizes = '100vw',
+}) => {
 	const classNames = [styles.card, className].filter(Boolean).join(' ');
 
 	return (
@@ -12,8 +18,10 @@ const ProjectCard = ({ project, priority = false, className = '' }) => {
 			aria-label={`View ${project.title} project`}
 		>
 			<div className={styles.media}>
-				<img
+				<Image
 					className={styles.image}
+					fill
+					sizes={imageSizes}
 					src={project.image}
 					alt={`${project.title} project preview`}
 					loading={priority ? 'eager' : 'lazy'}
