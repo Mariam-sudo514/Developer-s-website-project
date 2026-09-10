@@ -2,7 +2,7 @@ import ButtonLink from '@/components/Shared/ButtonLink/ButtonLink';
 import ContactButton from '../ContactButton/ContactButton';
 import ProjectCard from './ProjectCard';
 import styles from './ProjectsPage.module.css';
-import { projectsData } from './projectsData';
+import { projectListData } from './projectListData';
 
 // Match the grid, container width and ProjectCard padding.
 const projectImageSizes = [
@@ -31,7 +31,7 @@ const ProjectsPage = () => {
 
 			<section className={styles.projects} aria-label="Selected projects">
 				<div className={styles.grid}>
-					{projectsData.map((project, index) => (
+					{projectListData.map((project, index) => (
 						<ProjectCard
 							key={project.slug}
 							project={project}

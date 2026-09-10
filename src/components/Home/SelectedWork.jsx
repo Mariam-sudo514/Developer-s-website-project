@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import ProjectCard from '../Projects/ProjectCard';
-import { featuredProjects } from '../Projects/projectsData';
+import { projectListData } from '../Projects/projectListData';
 import styles from './SelectedWork.module.css';
 
 // Match the grid, container width and ProjectCard padding.
@@ -10,6 +10,10 @@ const projectImageSizes = [
 	'(max-width: 1200px) min(279px, calc((100vw - 268px) / 3))',
 	'min(387px, calc((100vw - 352px) / 3))',
 ].join(', ');
+
+const selectedProjects = ['sales-crm', 'kinolook', 'drogan-vpn']
+	.map((slug) => projectListData.find((project) => project.slug === slug))
+	.filter(Boolean);
 
 const SelectedWork = () => {
 	return (
@@ -22,7 +26,7 @@ const SelectedWork = () => {
 					</Link>
 				</div>
 				<div className={styles.grid}>
-					{featuredProjects.map((project, index) => (
+					{selectedProjects.map((project, index) => (
 						<ProjectCard
 							key={project.slug}
 							project={project}
