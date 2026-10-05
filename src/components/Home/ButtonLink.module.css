@@ -60,7 +60,7 @@
 	gap: 12px;
 	min-height: 76px;
 	padding: 0 44px;
-	border: 1px solid #4B4B98;
+	border: 1px solid var(--border);
 	border-radius: 15px;
 	font-size: 20px;
 	font-weight: 600;

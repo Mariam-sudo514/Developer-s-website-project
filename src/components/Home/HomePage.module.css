@@ -1,9 +1,53 @@
 .page {
-	min-height: 5880px;
+	--home-site-width: 1024px;
+	--home-wide-width: 1120px;
+	--home-hero-title-size: 61px;
+	--home-hero-title-line-height: 1.1;
+	--home-section-title-size: 51px;
+	--home-section-title-line-height: 1.08;
 }
 
-@media (max-width: 920px) {
+@media (max-width: 1279px) {
 	.page {
-		min-height: auto;
+		--home-site-width: 960px;
+		--home-wide-width: 1024px;
+		--home-hero-title-size: clamp(54px, 4.7vw, 58px);
+		--home-section-title-size: 48px;
+	}
+}
+
+@media (max-width: 1151px) {
+	.page {
+		--home-hero-title-size: clamp(50px, 5.2vw, 54px);
+		--home-hero-title-line-height: 1.1;
+		--home-section-title-size: 45px;
+	}
+}
+
+@media (max-width: 1023px) {
+	.page {
+		--home-hero-title-size: 50px;
+		--home-section-title-size: 42px;
+	}
+}
+
+@media (max-width: 880px) {
+	.page {
+		--home-hero-title-size: 50px;
+	}
+}
+
+@media (max-width: 736px) {
+	.page {
+		--home-hero-title-size: clamp(37px, 6.8vw, 50px);
+		--home-hero-title-line-height: 1.14;
+		--home-section-title-size: clamp(35px, 7.8vw, 42px);
+	}
+}
+
+@media (max-width: 448px) {
+	.page {
+		--home-hero-title-size: clamp(29px, 9.5vw, 37px);
+		--home-section-title-size: clamp(27px, 8.2vw, 34px);
 	}
 }
