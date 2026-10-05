@@ -1,5 +1,5 @@
 :root {
-	--site-width: 1392px;
+	--site-width: 1114px;
 	--page-bg: #fbfbfa;
 	--text: #07152d;
 	--muted: #4f5868;
@@ -7,7 +7,10 @@
 	--panel: rgba(255, 255, 255, 0.82);
 	--panel-solid: #ffffff;
 	--panel-soft: #f8f8f7;
-	--border: rgba(7, 21, 45, 0.26);
+	--bg-wb: #ffffff;
+	/* --border: rgba(7, 21, 45, 0.26); */
+	--border: #4b4b98;
+	--border-top: rgba(7, 21, 45, .1);
 	--border-soft: rgba(7, 21, 45, 0.14);
 	--nav-bg: rgba(255, 255, 255, 0.64);
 	--primary-button-bg: #07152d;
@@ -18,10 +21,11 @@
 	--contact-text: #ffffff;
 	--tag-bg: #f1f2f4;
 	--tag-text: #07152d;
-	--shadow-soft: 0 26px 80px rgba(7, 21, 45, 0.06);
+	--shadow-soft: 0 21px 64px rgba(7, 21, 45, 0.06);
 
 	--font-montserrat: 'Montserrat', sans-serif;
 }
+
 
 [data-theme='dark'] {
 	--page-bg: #020b1d;
@@ -29,9 +33,12 @@
 	--muted: #cbd2de;
 	--muted-soft: #9ea8bb;
 	--panel: rgba(17, 27, 49, 0.86);
+	--bg-wb: rgba(17, 27, 49, 0.86);
 	--panel-solid: #111b31;
 	--panel-soft: #111b31;
-	--border: rgba(255, 255, 255, 0.13);
+	--border-top: #7777f04f;
+	/* --border: rgba(255, 255, 255, 0.13); */
+	--text-hover: #7777f0;
 	--border-soft: rgba(255, 255, 255, 0.08);
 	--nav-bg: rgba(17, 27, 49, 0.58);
 	--primary-button-bg: #111b31;
@@ -42,8 +49,10 @@
 	--contact-text: #07152d;
 	--tag-bg: #ffffff;
 	--tag-text: #07152d;
-	--shadow-soft: 0 32px 90px rgba(0, 0, 0, 0.28);
+	--shadow-soft: 0 26px 72px rgba(0, 0, 0, 0.28);
+
 }
+
 
 * {
 	box-sizing: border-box;
@@ -66,7 +75,7 @@ body {
 
 	font-family: var(--font-montserrat);
 
-	font-size: 16px;
+	font-size: 12.8px;
 	line-height: 1.45;
 	transition: background-color 180ms ease, color 180ms ease;
 }
@@ -82,14 +91,35 @@ a {
 	color: inherit;
 }
 
+.siteContainer {
+	width: min(var(--home-site-width, var(--site-width)), calc(100% - 77px));
+	margin: 0 auto;
+}
+
 img {
 	display: block;
 	max-width: 100%;
 	height: auto;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 960px) {
 	:root {
-		--site-width: 1040px;
+		--site-width: 832px;
+	}
+
+	.siteContainer {
+		width: min(var(--home-site-width, var(--site-width)), calc(100% - 51px));
+	}
+}
+
+@media (max-width: 736px) {
+	.siteContainer {
+		width: min(512px, calc(100% - 32px));
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
 	}
 }

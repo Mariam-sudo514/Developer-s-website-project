@@ -2,6 +2,8 @@
 import './_styles/globals.css';
 import Footer from '@/components/Footer/Footer';
 import Header from '@/components/Header/Header';
+import ScrollToTop from '@/components/ScrollToTop/ScrollToTop';
+import { themeInitScript } from '@/lib/theme.mjs';
 import styles from './_styles/Layout.module.css';
 import './_styles/reset.css';
 
@@ -31,33 +33,17 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en" className={`${inter.variable} ${montserrat.variable}`} data-theme="light" suppressHydrationWarning>
 			<body>
-				<script
-					dangerouslySetInnerHTML={{
-						__html: `
-							(function () {
-								try {
-									var cookieTheme = document.cookie
-										.split('; ')
-										.find(function (row) { return row.indexOf('theme=') === 0; });
-									var savedTheme = window.localStorage && window.localStorage.getItem('theme');
-									var savedCookieTheme = cookieTheme && cookieTheme.split('=')[1];
-									savedTheme = savedTheme || savedCookieTheme;
-									var theme = savedTheme === 'dark' ? 'dark' : 'light';
-									document.documentElement.dataset.theme = theme;
-								} catch (error) {
-									document.documentElement.dataset.theme = 'light';
-								}
-							})();
-						`,
-					}}
-				/>
+				<script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
 				<BackgroundDecor/>
 
 				<div className={styles.page}>
 					<Header />
-					<main className={styles.main}>{children}</main>
+					<main className={styles.main} id="main-content" tabIndex={-1}>
+						{children}
+					</main>
 					<Footer />
 				</div>
+				<ScrollToTop />
 			</body>
 		</html>
 	);
