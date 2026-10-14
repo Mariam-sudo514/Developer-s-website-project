@@ -7,14 +7,17 @@ const ProjectCard = ({
 	project,
 	priority = false,
 	className = '',
+	ctaLabel = 'View project',
+	href,
 	imageSizes = '100vw',
 }) => {
 	const classNames = [styles.card, className].filter(Boolean).join(' ');
+	const cardHref = href || project.href || '/projects';
 
 	return (
 		<Link
 			className={classNames}
-			href={project.href}
+			href={cardHref}
 			aria-label={`View ${project.title} project`}
 		>
 			<div className={styles.media}>
@@ -41,7 +44,8 @@ const ProjectCard = ({
 			</div>
 
 			<span className={styles.arrow} aria-hidden="true">
-				<FaArrowRightLong />
+				<span>{ctaLabel}</span>
+				<FaArrowRightLong className={styles.arrowIcon} />
 			</span>
 		</Link>
 	);
