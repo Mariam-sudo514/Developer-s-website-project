@@ -47,7 +47,11 @@ const faqItems = [
 	},
 ];
 
-const FaqAccordion = () => {
+const FaqAccordion = ({
+	items = faqItems,
+	idPrefix = 'faq',
+	className,
+}) => {
 	const [openIndex, setOpenIndex] = useState(null);
 
 	const toggleItem = (index) => {
@@ -55,11 +59,11 @@ const FaqAccordion = () => {
 	};
 
 	return (
-		<div className={styles.faqList}>
-			{faqItems.map((item, index) => {
+		<div className={`${styles.faqList} ${className ?? ''}`}>
+			{items.map((item, index) => {
 				const isOpen = openIndex === index;
-				const buttonId = `faq-button-${index}`;
-				const panelId = `faq-panel-${index}`;
+				const buttonId = `${idPrefix}-button-${index}`;
+				const panelId = `${idPrefix}-panel-${index}`;
 
 				return (
 					<article
