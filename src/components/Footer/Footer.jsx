@@ -7,8 +7,8 @@ const Footer = () => {
 			<Link className={styles.logo} href="/">
 				Maria.dev
 			</Link>
-			<a className={styles.email} href="mailto:hello@maria.dev">
-				hello@maria.dev
+			<a className={styles.email} href="mailto:maria.dev.contact@gmail.com">
+				maria.dev.contact@gmail.com
 			</a>
 			<nav className={styles.socials} aria-label="Social links">
 				<a href="#" aria-label="LinkedIn">
