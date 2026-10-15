@@ -79,12 +79,12 @@ const ProjectDetailPage = ({ project }) => {
 						<div className={styles.actions}>
 							{project.githubUrl ? (
 								<a
-									className={styles.actionLink}
+									className={`${styles.actionLink} ${styles.githubLink}`}
 									href={project.githubUrl}
 									rel="noopener noreferrer"
 									target="_blank"
 								>
-									View on GitHub <span aria-hidden="true">↗</span>
+									View on GitHub
 								</a>
 							) : null}
 							{project.liveUrl ? (
