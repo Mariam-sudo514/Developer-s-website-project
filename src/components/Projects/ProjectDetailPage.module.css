@@ -140,10 +140,9 @@
 		box-shadow 180ms ease;
 }
 
-.githubLink::after {
-	/* Preserve the space previously occupied by the icon. */
-	content: '';
-	width: 1em;
+.actionLink.githubLink {
+	gap: 0;
+	width: fit-content;
 }
 
 .actionLink:hover {
