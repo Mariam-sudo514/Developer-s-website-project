@@ -1,0 +1,132 @@
+.privacyHero {
+	max-width: 780px;
+	margin: 0 auto;
+}
+
+.privacyHero h1 {
+	max-width: 780px;
+}
+
+.lastUpdated {
+	margin: 0;
+	color: var(--muted-soft);
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 1.5;
+}
+
+.policy {
+	width: min(100%, 860px);
+	margin: 0 auto;
+	padding: 44px;
+	border: 1px solid var(--border);
+	border-radius: 16px;
+	background: var(--panel);
+	box-shadow: var(--shadow-soft);
+	backdrop-filter: blur(16px);
+}
+
+.policySection + .policySection {
+	margin-top: 44px;
+	padding-top: 44px;
+	border-top: 1px solid var(--border-soft);
+}
+
+.sectionHeading {
+	display: grid;
+	grid-template-columns: 36px minmax(0, 1fr);
+	gap: 16px;
+	align-items: start;
+}
+
+.sectionHeading > span {
+	padding-top: 4px;
+	color: var(--border);
+	font-size: 11px;
+	font-weight: 800;
+	letter-spacing: 2px;
+	line-height: 1;
+}
+
+.sectionHeading h2 {
+	margin: 0;
+	color: var(--text);
+	font-size: 28px;
+	font-weight: 800;
+	line-height: 1.15;
+	letter-spacing: 0;
+}
+
+.policySection p,
+.policySection li {
+	max-width: 700px;
+	margin: 20px 0 0 52px;
+	color: var(--muted);
+	font-size: 15px;
+	font-weight: 600;
+	line-height: 1.7;
+}
+
+.policySection a {
+	color: var(--text);
+	text-underline-offset: 3px;
+	transition: color 160ms ease;
+}
+
+.policySection a:hover {
+	color: var(--border);
+}
+
+.policySection code {
+	padding: 2px 5px;
+	border-radius: 5px;
+	background: var(--panel-solid);
+	color: var(--text);
+	font-family: inherit;
+	font-size: 0.92em;
+}
+
+@media (max-width: 736px) {
+	.policy {
+		padding: 28px 24px;
+	}
+
+	.policySection + .policySection {
+		margin-top: 34px;
+		padding-top: 34px;
+	}
+
+	.sectionHeading {
+		grid-template-columns: 30px minmax(0, 1fr);
+		gap: 12px;
+	}
+
+	.sectionHeading h2 {
+		font-size: 24px;
+	}
+
+	.policySection p,
+	.policySection li {
+		margin-left: 42px;
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 448px) {
+	.policy {
+		padding: 24px 19px;
+	}
+
+	.policySection p,
+	.policySection li {
+		margin-left: 0;
+	}
+
+	.sectionHeading {
+		grid-template-columns: 28px minmax(0, 1fr);
+	}
+
+	.sectionHeading h2 {
+		font-size: 22px;
+	}
+}

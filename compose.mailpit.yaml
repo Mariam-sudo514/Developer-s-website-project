@@ -1,0 +1,24 @@
+services:
+  mailpit:
+    image: axllent/mailpit:v1.31.5
+    ports:
+      - "127.0.0.1:1025:1025"
+      - "127.0.0.1:8025:8025"
+    environment:
+      TMPDIR: /tmp
+      MP_DISABLE_VERSION_CHECK: "true"
+      MP_SMTP_DISABLE_RDNS: "true"
+      MP_SMTP_RELAY_ALL: "false"
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=64m,mode=1777
+    mem_limit: 128m
+    memswap_limit: 128m
+    logging:
+      driver: none
+    networks:
+      - mailpit-local
+
+networks:
+  mailpit-local:
+    internal: false

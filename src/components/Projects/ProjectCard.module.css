@@ -1,13 +1,13 @@
 .card {
 	display: flex;
 	flex-direction: column;
-	border: 1px solid #4B4B98;
+	border: 1px solid var(--border);
     background: var(--panel-solid);
     min-height: 100%;
     color: var(--text);
-    /* box-shadow: var(--shadow-soft); */
-    border-radius: 20px;
-    padding: 24px;
+
+	border-radius: 16px;
+	padding: 16px 16px 30px 16px;
     text-decoration: none;
     transition:
 		transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
@@ -16,16 +16,15 @@
 
 }
 
-/* .card:hover {
-	transform: translateY(-1px);
-	border-color: var(--border);
-	box-shadow: 0 20px 55px rgba(7, 21, 45, 0.08);
-} */
-
 .card:hover {
 	transform: none;
 	border-color: var(--border);
-	/* box-shadow: 0 18px 45px rgba(7, 21, 45, 0.075); */
+
+}
+
+.card:focus-visible {
+	outline: 3px solid var(--border);
+	outline-offset: 4px;
 }
 
 .media {
@@ -34,7 +33,7 @@
 	overflow: hidden;
 	aspect-ratio: 16 / 10;
 	border: 1px solid var(--border-soft);
-	border-radius: 18px;
+	border-radius: 14px;
 	background: var(--panel-soft);
 }
 
@@ -45,28 +44,26 @@
 	transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* .card:hover .image {
-	transform: scale(1.015);
-} */
 
 .card:hover .image {
-	transform: scale(1.012);
+	transform: scale(1.12);
 }
 
 
 .body {
 	display: flex;
+	flex: 1 1 auto;
 
 	flex-direction: column;
-	gap: 30px;
-	padding: 42px 4px 0;
+	gap: 18px;
+	padding: 24px 3px 0;
 }
 
 .body h3 {
 	margin: 0;
 	color: var(--text);
 
-	font-size: 35px;
+	font-size: 24px;
 	font-weight: 800;
 	line-height: 1.08;
 	letter-spacing: 0;
@@ -75,7 +72,7 @@
 .body p {
 
 	color: var(--muted-soft);
-	font-size: 18px;
+	font-size: 13px;
     font-weight: 600;
     line-height: 1.6;
 }
@@ -83,7 +80,7 @@
 .tags {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 14px;
+	gap: 8px;
 	margin-top: auto;
 }
 
@@ -91,94 +88,118 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	min-height: 31px;
-	padding: 0 18px;
-	border-radius: 8px;
+	min-height: 25px;
+	padding: 0 14px;
+	border-radius: 6px;
 	background: var(--tag-bg);
 	color: var(--tag-text);
-	font-size: 14px;
+	font-size: 11px;
     font-weight: 700;
-	/* line-height: 1; */
+
 }
+
 
 .arrow {
+	align-self: stretch;
+
 	display: inline-flex;
 	align-items: center;
-	justify-content: center;
-	width: 74px;
-	height: 74px;
-	margin-top: 48px;
-	border: 1px solid var(--border);
-	border-radius: 50%;
+	justify-content: flex-start;
+	gap: 10px;
+
+	margin: 27px 3px 0;
+	padding-top: 19px;
+	border-top: 1px solid var(--border-top);
+
+	background: transparent;
 	color: var(--text);
-	font-size: 24px;
+
+	width: auto;
+	height: auto;
+	border-radius: 0;
+
+	font-size: 14px;
+	font-weight: 800;
+	line-height: 1;
+	text-decoration: none;
+
 	transition:
-		/* background-color 0.3s ease,
-		color 0.3s ease,
-		border-color 0.3s ease,
-		transform 0.35s cubic-bezier(0.22, 1, 0.36, 1); */
-		background-color 0.4s ease,
-		color 0.4s ease,
-		border-color 0.4s ease,
-		transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+		color 0.35s ease,
+		border-color 0.35s ease;
 }
 
-/* .card:hover .arrow {
-	background: var(--text);
-	color: var(--page-bg);
-	border-color: var(--text);
-	transform: translateX(2px);
-} */
+.arrowText {
+	display: inline-flex;
+}
+
+.arrowIcon {
+	width: 12px;
+	height: 12px;
+	flex: 0 0 auto;
+
+	transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 
 .card:hover .arrow {
-	/* background: var(--text);
-	color: var(--page-bg);
-	border-color: var(--text);
-	transform: translateX(3px); */
-
-	background: var(--text);
-	color: var(--page-bg);
-	border-color: var(--text);
-	/* transform: translateX(2px); */
+	background: transparent;
+	color: var(--border);
+	border-top-color: rgba(7, 21, 45, 0.18);
 }
 
-@media (max-width: 920px) {
+.card:hover .arrowIcon {
+	transform: translateX(6px);
+}
+
+@media (max-width: 736px) {
 	.card {
-		padding: 22px;
+		padding: 18px 18px 26px 18px;
 	}
 
 	.body {
-		padding-top: 34px;
+		padding-top: 27px;
 	}
 
 	.arrow {
-		width: 64px;
-		height: 64px;
-		font-size: 20px;
+		margin-top: 32px;
+		padding-top: 22px;
+		font-size: 14px;
 	}
 }
 
-@media (max-width: 560px) {
+@media (max-width: 448px) {
 	.card {
-		padding: 18px;
-		border-radius: 22px;
+		padding: 14px 14px 24px 14px;
+		border-radius: 18px;
 	}
 
 	.media {
-		border-radius: 15px;
+		border-radius: 12px;
 	}
 
 	.body h3 {
-		font-size: 26px;
+		font-size: 21px;
 	}
 
 	.tags {
-		gap: 10px;
+		gap: 8px;
 	}
 
 	.tags span {
-		min-height: 29px;
-		padding: 0 14px;
-		font-size: 11px;
+		min-height: 23px;
+		padding: 0 11px;
+		font-size: 9px;
+	}
+
+	.arrow {
+		margin-top: 27px;
+		padding-top: 19px;
+		font-size: 12px;
+		gap: 8px;
+	}
+
+	.arrowIcon {
+		width: 10px;
+		height: 10px;
 	}
 }

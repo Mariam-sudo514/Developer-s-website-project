@@ -3,10 +3,7 @@ import {
 	FiClock,
 	FiCode,
 	FiGlobe,
-	FiHelpCircle,
-	FiLayers,
 	FiMail,
-	FiMessageCircle,
 	FiMonitor,
 	FiSearch,
 	FiSend,
@@ -14,35 +11,37 @@ import {
 	FiUsers,
 } from 'react-icons/fi';
 import { FaArrowRightLong } from 'react-icons/fa6';
+import HomeCta from '../Home/HomeCta';
+import ContactForm from './ContactForm';
 import FaqAccordion from './FaqAccordion';
 import styles from './InfoPages.module.css';
 
 const tools = [
-	'Figma',
-	'Webflow',
-	'Next.js',
-	'Tailwind CSS',
-	'TypeScript',
-	'Framer',
-	'Notion',
-	'GitHub',
+	{ name: 'JavaScript', badge: 'JS' },
+	{ name: 'TypeScript', badge: 'TS' },
+	{ name: 'React.js', badge: 'Re' },
+	{ name: 'Next.js', badge: 'Ne' },
+	{ name: 'Node.js', badge: 'No' },
+	{ name: 'Tailwind CSS', badge: 'Ta' },
+	{ name: 'Figma', badge: 'Fi' },
+	{ name: 'GitHub', badge: 'Gi' },
 ];
 
 const values = [
 	{
 		icon: FiStar,
 		title: 'Design sensitivity',
-		text: 'Refined visual systems, thoughtful typography, and brand-aware interfaces that feel intentional and timeless.',
+		text: 'A strong visual foundation for translating ideas and design systems into clear, responsive interfaces without losing the details that make a product feel intentional.',
 	},
 	{
 		icon: FiCode,
-		title: 'Frontend precision',
-		text: 'Clean, responsive builds with a focus on performance, accessibility, and pixel-perfect implementation.',
+		title: 'Full-stack execution',
+		text: 'From React interfaces and application logic to Node.js server-side functionality and API integration, I build connected experiences across the stack.',
 	},
 	{
 		icon: FiUsers,
-		title: 'Collaborative process',
-		text: 'Clear communication, transparency, and a partner mindset to ensure a smooth and successful project from start to finish.',
+		title: 'Product-minded development',
+		text: 'I think beyond individual screens — considering usability, structure, maintainability, performance, and how each part supports the product as a whole.',
 	},
 ];
 
@@ -53,59 +52,15 @@ const journey = [
 	},
 	{
 		year: '2021',
-		text: 'Expanded into brand websites and UI/UX.',
+		text: 'Expanded into brand websites, UI/UX, and more complex frontend development.',
 	},
 	{
 		year: '2023',
-		text: 'Focused on premium product and service websites.',
+		text: 'Focused on larger web projects while deepening application architecture and development skills.',
 	},
 	{
 		year: 'Today',
-		text: 'Helping brands create elegant digital experiences.',
-	},
-];
-
-const contactCards = [
-	{
-		icon: FiMail,
-		title: 'Email',
-		text: 'hello@maria.dev',
-	},
-	{
-		icon: FiClock,
-		title: 'Response time',
-		text: 'Usually within 1-2 business days',
-	},
-	{
-		icon: FiLayers,
-		title: 'Services',
-		tags: ['Landing pages', 'Brand websites', 'Frontend build', 'UI/UX'],
-	},
-	{
-		icon: FiGlobe,
-		title: 'Open to collaborations worldwide',
-		text: 'I work with clients across different time zones.',
-	},
-];
-
-const quickSteps = [
-	{
-		icon: FiLayers,
-		step: 'Step 01',
-		title: 'Tell me about your project',
-		text: 'Share your ideas, goals, and what success looks like.',
-	},
-	{
-		icon: FiSearch,
-		step: 'Step 02',
-		title: "I'll review the details",
-		text: "I'll review your project and reply with initial thoughts.",
-	},
-	{
-		icon: FiSend,
-		step: 'Step 03',
-		title: 'We plan the next steps',
-		text: "Together we'll define the plan, timeline, and deliverables.",
+		text: 'Working across frontend and backend with React, Next.js, TypeScript, and Node.js.',
 	},
 ];
 
@@ -134,14 +89,28 @@ const PageButton = ({ href, children, variant = 'primary', className = '' }) => 
 	</ButtonLink>
 );
 
-const Hero = ({ label, title, text, children }) => (
-	<section className={styles.hero}>
-		<p className={styles.label}>{label}</p>
-		<h1>{title}</h1>
-		<p className={styles.lead}>{text}</p>
-		{children && <div className={styles.heroActions}>{children}</div>}
-	</section>
-);
+const Hero = ({ label, title, text, children, useContainer = false }) => {
+	const content = (
+		<>
+			<p className={styles.label}>{label}</p>
+			<h1>{title}</h1>
+			<p className={styles.lead}>{text}</p>
+			{children && <div className={styles.heroActions}>{children}</div>}
+		</>
+	);
+
+	return (
+		<section className={styles.hero}>
+			{useContainer ? (
+				<div className={`siteContainer ${styles.faqHeroContainer}`}>
+					{content}
+				</div>
+			) : (
+				content
+			)}
+		</section>
+	);
+};
 
 const IconBadge = ({ icon: Icon }) => (
 	<span className={styles.iconBadge} aria-hidden="true">
@@ -169,11 +138,11 @@ const CtaPanel = ({ icon, title, text, buttonText, href }) => (
 );
 
 export const AboutPageContent = () => (
-	<div className={styles.page}>
+	<div className={`${styles.page} ${styles.aboutPage}`}>
 		<Hero
 			label="ABOUT ME"
-			title="Thoughtful design. Clean code. Human-centered experiences."
-			text="I'm Maria, a frontend developer and designer focused on creating elegant, responsive websites for brands that value detail, clarity, and intentional experiences."
+			title="Thoughtful design. Full-stack development. Human-centered experiences."
+			text="I'm Maria, a full-stack developer with a strong design background, focused on building thoughtful, responsive web products from interface to application logic."
 		>
 			<PageButton href="/contacts">Let&apos;s work together</PageButton>
 			<PageButton href="/#selected-work" variant="secondary">
@@ -182,34 +151,32 @@ export const AboutPageContent = () => (
 		</Hero>
 
 		<section className={styles.aboutIntro}>
-			<div
-				className={styles.portrait}
-				role="img"
-				aria-label="Designer working on a laptop in a calm workspace"
-			>
-				<span className={styles.screen} />
-				<span className={styles.notebook} />
-				<span className={styles.cup} />
+			<div className={styles.portrait}>
+				<img
+					alt="Maria, full-stack developer"
+					className={styles.portraitImage}
+					src="/my photo/2.png"
+				/>
 			</div>
 
 			<div className={styles.copyBlock}>
 				<h2>A little about me</h2>
 				<p>
-					I blend design thinking with frontend craftsmanship to build
-					websites that are not just beautiful, but purposeful and effective.
-					Every project starts with understanding your brand, your audience,
-					and your goals.
+					I combine design thinking with full-stack development to build web
+					experiences that are clear, responsive, and well structured. I care about
+					how an interface looks and feels, but also about the architecture and logic
+					behind it.
 				</p>
 				<p>
-					With a background in both design and development, I bring a holistic
-					approach to every build — from structure and content to interaction
-					and performance. I believe great websites are defined by clarity,
-					usability, and attention to detail.
+					My core stack includes JavaScript, TypeScript, React, Next.js, and Node.js.
+					I work across UI implementation, application logic, routing, APIs,
+					integrations, and the technical details that turn a design into a complete
+					working product.
 				</p>
 				<p>
-					I work closely with founders and teams who care about quality and
-					want a partner who communicates clearly, thinks ahead, and delivers
-					with care.
+					I value clean structure, thoughtful technical decisions, and reliable
+					execution. My goal is to build products that are intuitive for users,
+					maintainable in code, and ready to grow as requirements evolve.
 				</p>
 			</div>
 		</section>
@@ -240,9 +207,9 @@ export const AboutPageContent = () => (
 				<h2>Tools I use</h2>
 				<div className={styles.toolsGrid}>
 					{tools.map((tool) => (
-						<div className={styles.toolCard} key={tool}>
-							<span aria-hidden="true">{tool.slice(0, 2)}</span>
-							<strong>{tool}</strong>
+						<div className={styles.toolCard} key={tool.name}>
+							<span aria-hidden="true">{tool.badge}</span>
+							<strong>{tool.name}</strong>
 						</div>
 					))}
 				</div>
@@ -250,8 +217,8 @@ export const AboutPageContent = () => (
 		</section>
 
 		<CtaPanel
-			title="Let's create something elegant together"
-			text="Have a project in mind or just want to say hello? I'd love to hear from you."
+			title="Let's build something thoughtful together"
+			text="Have a project in mind? Let's turn it into a thoughtful, well-built product — from interface to application logic."
 			buttonText="Start a project"
 			href="/contacts"
 		/>
@@ -267,86 +234,69 @@ export const ContactPageContent = () => (
 		/>
 
 		<section className={styles.contactLayout}>
-			<form className={styles.formCard}>
-				<label>
-					<span>Your name</span>
-					<input type="text" placeholder="Enter your full name" />
-				</label>
-				<label>
-					<span>Email</span>
-					<input type="email" placeholder="Enter your email address" />
-				</label>
-				<label>
-					<span>Company</span>
-					<input type="text" placeholder="Your company or brand" />
-				</label>
-				<label>
-					<span>Project type</span>
-					<select defaultValue="">
-						<option value="" disabled>
-							Select project type
-						</option>
-					</select>
-				</label>
-				<label>
-					<span>Budget range</span>
-					<select defaultValue="">
-						<option value="" disabled>
-							Select budget range
-						</option>
-					</select>
-				</label>
-				<label>
-					<span>Project details</span>
-					<textarea placeholder="Tell me about your project, goals, timeline, and any specific needs..." />
-				</label>
-				<button className={`${styles.button} ${styles.primary}`} type="button">
-					Send inquiry <FaArrowRightLong aria-hidden="true" />
-				</button>
-			</form>
+			<ContactForm />
 
-			<div className={styles.contactCards}>
-				{contactCards.map((card) => (
-					<article className={styles.infoCard} key={card.title}>
-						<IconBadge icon={card.icon} />
+			<aside className={styles.contactInfo} aria-labelledby="get-in-touch-title">
+				<h2 id="get-in-touch-title">GET IN TOUCH</h2>
+
+				<div className={styles.contactDetails}>
+					<div className={styles.contactDetail}>
+						<IconBadge icon={FiMail} />
 						<div>
-							<h2>{card.title}</h2>
-							{card.text && <p>{card.text}</p>}
-							{card.tags && (
-								<div className={styles.pills}>
-									{card.tags.map((tag) => (
-										<span key={tag}>{tag}</span>
-									))}
-								</div>
-							)}
+							<h3>Email</h3>
+							<a className={styles.contactEmail} href="mailto:maria.dev.contact@gmail.com">
+								maria.dev.contact@gmail.com
+							</a>
 						</div>
-					</article>
-				))}
-			</div>
-		</section>
+					</div>
 
-		<section className={styles.sectionBlock}>
-			<h2>Prefer a quick overview?</h2>
-			<div className={styles.threeGrid}>
-				{quickSteps.map((step) => (
-					<article className={styles.stepCard} key={step.step}>
-						<IconBadge icon={step.icon} />
+					<div className={styles.contactDetail}>
+						<IconBadge icon={FiClock} />
 						<div>
-							<span>{step.step}</span>
-							<h3>{step.title}</h3>
-							<p>{step.text}</p>
+							<h3>Response time</h3>
+							<p>Usually within 1–2 business days</p>
 						</div>
-					</article>
-				))}
-			</div>
-		</section>
+					</div>
 
-		<CtaPanel
-			title="Ready when you are"
-			text="Whether you need a full website, a redesign, or a focused frontend solution — I'm here to help."
-			buttonText="Book a call"
-			href="/contacts"
-		/>
+					<div className={styles.contactDetail}>
+						<IconBadge icon={FiGlobe} />
+						<div>
+							<h3>Worldwide</h3>
+							<p>Remote collaboration across time zones</p>
+						</div>
+					</div>
+				</div>
+
+				<div className={styles.contactDivider} aria-hidden="true" />
+
+				<div className={styles.nextSteps}>
+					<p className={styles.contactEyebrow}>WHAT HAPPENS NEXT</p>
+					<ol className={styles.nextStepsList}>
+						<li className={styles.nextStep}>
+							<span>01</span>
+							<div>
+								<h3>Send your inquiry</h3>
+								<p>Tell me about your project.</p>
+							</div>
+						</li>
+						<li className={styles.nextStep}>
+							<span>02</span>
+							<div>
+								<h3>I review the details</h3>
+								<p>I&apos;ll get back to you within 1–2 business days.</p>
+							</div>
+						</li>
+						<li className={styles.nextStep}>
+							<span>03</span>
+							<div>
+								<h3>We discuss next steps</h3>
+								<p>We define the scope, timeline, and how we can work together.</p>
+							</div>
+						</li>
+					</ol>
+				</div>
+			</aside>
+		</section>
 	</div>
 );
 
@@ -356,27 +306,17 @@ export const FaqPageContent = () => (
 			label="FAQS"
 			title="Frequently asked questions"
 			text="Find answers to common questions about my process, timelines, pricing, revisions, and how we can work together."
+			useContainer
 		>
 			<PageButton href="/contacts">Start a project</PageButton>
 		</Hero>
 
-		<section className={styles.faqLayout}>
-			<aside className={styles.questionCard}>
-				<IconBadge icon={FiHelpCircle} />
-				<h2>Need something specific?</h2>
-				<p>
-					If you have a question that isn&apos;t covered here or want to discuss
-					your project, I&apos;m happy to help.
-				</p>
-				<PageButton href="/contacts" variant="secondary">
-					Contact me
-				</PageButton>
-			</aside>
-
-			<FaqAccordion />
+		<section className={`siteContainer ${styles.faqLayout}`}>
+			<h2 className={styles.faqSectionTitle}>Need something specific?</h2>
+			<FaqAccordion className={styles.faqProcessAccordion} />
 		</section>
 
-		<section className={styles.processRow}>
+		<section className={`siteContainer ${styles.processRow}`}>
 			{faqProcess.map((item) => (
 				<article className={styles.processCard} key={item.title}>
 					<IconBadge icon={item.icon} />
@@ -388,12 +328,9 @@ export const FaqPageContent = () => (
 			))}
 		</section>
 
-		<CtaPanel
-			icon={FiMessageCircle}
-			title="Still have questions?"
-			text="I'd love to hear from you. Send me a message and I'll get back to you as soon as possible."
-			buttonText="Contact me"
-			href="/contacts"
+		<HomeCta
+			title="Still have a question?"
+			text="Have a project or something specific you'd like to discuss? I'd be happy to hear from you."
 		/>
 	</div>
 );

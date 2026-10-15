@@ -4,14 +4,12 @@ import ProjectCard from './ProjectCard';
 import styles from './ProjectsPage.module.css';
 import { projectListData } from './projectListData';
 
-// Match the grid, container width and ProjectCard padding.
 const projectImageSizes = [
-	'(max-width: 560px) min(480px, calc(100vw - 72px))',
-	'(max-width: 700px) calc(100vw - 88px)',
-	'(max-width: 920px) min(298px, calc(50vw - 82px))',
-	'(max-width: 1100px) calc(50vw - 98px)',
-	'(max-width: 1200px) min(276px, calc((100vw - 276px) / 3))',
-	'min(384px, calc((100vw - 360px) / 3))',
+	'(max-width: 448px) min(384px, calc(100vw - 58px))',
+	'(max-width: 736px) min(472px, calc(100vw - 72px))',
+	'(max-width: 960px) min(371px, calc(50vw - 71px))',
+	'(max-width: 1016px) calc(50vw - 99px)',
+	'min(316px, calc((100vw - 264px) / 3))',
 ].join(', ');
 
 const ProjectsPage = () => {
@@ -33,10 +31,12 @@ const ProjectsPage = () => {
 				<div className={styles.grid}>
 					{projectListData.map((project, index) => (
 						<ProjectCard
+							className={styles.projectCard}
 							key={project.slug}
 							project={project}
 							imageSizes={projectImageSizes}
 							priority={index < 3}
+							ctaLabel="View project"
 						/>
 					))}
 				</div>
@@ -50,7 +50,7 @@ const ProjectsPage = () => {
 						design and performance.
 					</p>
 				</div>
-				<ContactButton compact />
+				<ContactButton />
 			</section>
 		</div>
 	);

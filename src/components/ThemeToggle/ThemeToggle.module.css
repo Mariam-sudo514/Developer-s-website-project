@@ -2,14 +2,19 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	align-items: center;
-	width: 113px;
+	width: 86px;
 	/* height: 30px; */
 	padding: 4px;
-	border: 1px solid #4B4B98;
+	border: 1px solid var(--border);
 	border-radius: 999px;
 	background: transparent;
 	color: var(--text);
 	cursor: pointer;
+}
+
+.toggle:focus-visible {
+	outline: 3px solid var(--border);
+	outline-offset: 4px;
 }
 
 .toggle span {
@@ -18,8 +23,8 @@
 	justify-content: center;
 
 	border-radius: 999px;
-	height: 28px;
-    font-size: 12px;
+	height: 19px;
+    font-size: 9px;
     font-weight: 600;
 	line-height: 1;
 }
@@ -27,4 +32,52 @@
 .active {
 	background: var(--text);
 	color: var(--page-bg);
+}
+
+@media (max-width: 880px) {
+	.toggle {
+		box-sizing: border-box;
+		width: 98px;
+		height: var(--compact-control-height, 35px);
+		min-height: var(--compact-control-height, 35px);
+	}
+
+	.toggle span {
+		box-sizing: border-box;
+		height: calc(var(--compact-control-height, 35px) - 10px);
+		min-width: 0;
+		padding: 0 6px;
+		line-height: 1;
+		transition:
+			background-color 180ms ease,
+			color 180ms ease;
+	}
+
+	.active {
+		background: var(--text);
+		color: var(--page-bg);
+	}
+}
+
+@media (max-width: 614px) {
+	.toggle {
+		width: 90px;
+	}
+
+	.toggle span {
+		height: calc(var(--compact-control-height, 34px) - 10px);
+		font-size: 9px;
+	}
+}
+
+@media (max-width: 336px) {
+	.toggle {
+		width: 80px;
+		padding: 2px;
+	}
+
+	.toggle span {
+		height: calc(var(--compact-control-height, 34px) - 10px);
+		font-size: 8px;
+	}
 }
