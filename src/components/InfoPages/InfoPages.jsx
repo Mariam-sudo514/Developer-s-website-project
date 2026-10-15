@@ -155,7 +155,7 @@ export const AboutPageContent = () => (
 				<img
 					alt="Maria, full-stack developer"
 					className={styles.portraitImage}
-					src="/my photo/2.png"
+					src="/my photo/Professional portrait with a laptop.png"
 				/>
 			</div>
 
