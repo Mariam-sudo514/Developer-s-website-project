@@ -2,7 +2,8 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import { persistTheme } from '@/lib/theme.mjs';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
@@ -29,11 +30,49 @@ const Navigation = () => {
 	const pathname = usePathname();
 	const [theme, setTheme] = useState('light');
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const [mobilePosition, setMobilePosition] = useState(null);
+	const anchorRef = useRef(null);
 	const navigationRef = useRef(null);
 	const menuButtonRef = useRef(null);
 	const panelRef = useRef(null);
 	const desktopLinksRef = useRef(null);
 	const menuId = 'primary-navigation-menu';
+
+	useLayoutEffect(() => {
+		const mobileLayout = window.matchMedia('(max-width: 880px)');
+		const updatePosition = () => {
+			if (!mobileLayout.matches) {
+				anchorRef.current?.style.removeProperty('--mobile-navigation-width');
+				anchorRef.current?.style.removeProperty('--mobile-navigation-height');
+				setMobilePosition(null);
+				return;
+			}
+
+			const anchor = anchorRef.current;
+			const navigation = navigationRef.current;
+			if (!anchor || !navigation) return;
+
+			// Reserve the controls' original flex position without fixing the logo.
+			const { width, height } = navigation.getBoundingClientRect();
+			anchor.style.setProperty('--mobile-navigation-width', `${width}px`);
+			anchor.style.setProperty('--mobile-navigation-height', `${height}px`);
+			const { left } = anchor.getBoundingClientRect();
+			setMobilePosition((current) => current?.left === left ? current : { left });
+		};
+
+		const observer = new ResizeObserver(updatePosition);
+		observer.observe(anchorRef.current);
+		window.addEventListener('resize', updatePosition);
+		mobileLayout.addEventListener('change', updatePosition);
+		document.fonts.ready.then(updatePosition);
+		updatePosition();
+
+		return () => {
+			observer.disconnect();
+			window.removeEventListener('resize', updatePosition);
+			mobileLayout.removeEventListener('change', updatePosition);
+		};
+	}, []);
 
 	useEffect(() => {
 		const currentTheme =
@@ -42,38 +81,59 @@ const Navigation = () => {
 	}, []);
 
 	useEffect(() => {
-		if (!isMenuOpen) {
+		if (!isMenuOpen || !window.matchMedia('(max-width: 880px)').matches) {
 			return undefined;
 		}
 
-		const closeOnOutsideClick = (event) => {
-			if (!navigationRef.current?.contains(event.target)) {
-				setIsMenuOpen(false);
-			}
+		const { body, documentElement } = document;
+		const { scrollX, scrollY } = window;
+		const bodyStyles = {
+			position: body.style.position,
+			top: body.style.top,
+			left: body.style.left,
+			width: body.style.width,
+			overflowX: body.style.overflowX,
+			overflowY: body.style.overflowY,
+			paddingRight: body.style.paddingRight,
 		};
+		const rootStyles = {
+			overflowX: documentElement.style.overflowX,
+			overflowY: documentElement.style.overflowY,
+		};
+		const scrollbarWidth = window.innerWidth - documentElement.clientWidth;
+		const bodyPaddingRight = getComputedStyle(body).paddingRight;
+
+		Object.assign(documentElement.style, {
+			overflowX: 'hidden',
+			overflowY: 'hidden',
+		});
+		Object.assign(body.style, {
+			position: 'fixed',
+			top: `${-scrollY}px`,
+			left: `${-scrollX}px`,
+			width: '100%',
+			overflowX: 'hidden',
+			overflowY: 'hidden',
+		});
+		if (scrollbarWidth > 0) {
+			body.style.paddingRight = `${parseFloat(bodyPaddingRight) + scrollbarWidth}px`;
+		}
 
 		const closeOnEscape = (event) => {
 			if (event.key === 'Escape') {
 				event.preventDefault();
 				setIsMenuOpen(false);
-				menuButtonRef.current?.focus();
+				menuButtonRef.current?.focus({ preventScroll: true });
 			}
 		};
 
-		const closeOnFocusOutside = (event) => {
-			if (!navigationRef.current?.contains(event.target)) {
-				setIsMenuOpen(false);
-			}
-		};
-
-		document.addEventListener('focusin', closeOnFocusOutside);
-		document.addEventListener('pointerdown', closeOnOutsideClick);
 		document.addEventListener('keydown', closeOnEscape);
 
 		return () => {
-			document.removeEventListener('focusin', closeOnFocusOutside);
-			document.removeEventListener('pointerdown', closeOnOutsideClick);
 			document.removeEventListener('keydown', closeOnEscape);
+			Object.assign(body.style, bodyStyles);
+			Object.assign(documentElement.style, rootStyles);
+			window.scrollTo({ left: scrollX, top: scrollY, behavior: 'instant' });
 		};
 	}, [isMenuOpen]);
 
@@ -115,12 +175,16 @@ const Navigation = () => {
 		setIsMenuOpen(false);
 	};
 
-	return (
+	const navigation = (
 		<nav
-			className={styles.navigationShell}
+			className={`${styles.navigationShell} ${mobilePosition ? styles.mobileFixed : ''}`}
 			ref={navigationRef}
+			style={mobilePosition || undefined}
 			aria-label="Primary navigation"
 		>
+			{isMenuOpen ? (
+				<div className={styles.backdrop} aria-hidden="true" onClick={closeMenu} />
+			) : null}
 			<div className={styles.navigation}>
 				<svg
 					aria-hidden="true"
@@ -219,18 +283,16 @@ const Navigation = () => {
 							<span>Start a project</span>
 							<FaArrowRightLong aria-hidden="true" className={styles.panelCtaIcon} />
 						</Link>
-						<Link
-							className={`${styles.panelCta} ${styles.panelContactCta}`}
-							href="/contacts"
-							onClick={closeMenu}
-						>
-							<span>Contact me</span>
-							<FaArrowRightLong aria-hidden="true" className={styles.panelCtaIcon} />
-						</Link>
 					</div>
 				</div>
 			) : null}
 		</nav>
+	);
+
+	return (
+		<div className={styles.navigationAnchor} ref={anchorRef}>
+			{mobilePosition ? createPortal(navigation, document.body) : navigation}
+		</div>
 	);
 };
 

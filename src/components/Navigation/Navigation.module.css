@@ -1,3 +1,7 @@
+.navigationAnchor {
+	display: contents;
+}
+
 .navigationShell {
 	position: fixed;
 	top: 48px;
@@ -109,6 +113,10 @@
 		color 180ms ease,
 		border-color 180ms ease,
 		box-shadow 180ms ease;
+}
+
+.backdrop {
+	display: none;
 }
 
 .menuButton:hover {
@@ -315,17 +323,46 @@
 }
 
 @media (max-width: 880px) {
+	.navigationAnchor {
+		display: block;
+		flex-shrink: 0;
+		width: var(--mobile-navigation-width, auto);
+		height: var(--mobile-navigation-height, auto);
+	}
+
 	.navigationShell {
 		position: relative;
 		top: auto;
 		left: auto;
-		z-index: auto;
+		z-index: 30;
 		width: auto;
 		transform: none;
 	}
 
+	.mobileFixed {
+		position: fixed;
+		top: 37px;
+		z-index: 100;
+		width: max-content;
+	}
+
+	.backdrop {
+		position: fixed;
+		inset: 0;
+		z-index: 0;
+		display: block;
+		background: rgba(255, 255, 255, 0.28);
+		-webkit-backdrop-filter: blur(12px) saturate(115%);
+		backdrop-filter: blur(12px) saturate(115%);
+	}
+
+	:global([data-theme='dark']) .backdrop {
+		background: rgba(3, 12, 30, 0.32);
+	}
+
 	.navigation {
 		--compact-control-height: 35px;
+		z-index: 1;
 		gap: 8px;
 		padding: 6px;
 		border-radius: 999px;
@@ -357,6 +394,9 @@
 		max-height: calc(100dvh - var(--panel-top) - 14px);
 		overflow-y: auto;
 		overscroll-behavior: contain;
+		background: color-mix(in srgb, var(--panel-solid) 72%, transparent);
+		-webkit-backdrop-filter: blur(16px) saturate(120%);
+		backdrop-filter: blur(16px) saturate(120%);
 		right: auto;
 		left: 50%;
 		width: min(calc(100vw - 26px), 496px);
@@ -367,6 +407,10 @@
 }
 
 @media (max-width: 818px) {
+	.mobileFixed {
+		top: 34px;
+	}
+
 	.panel {
 		--panel-top: 85px;
 		width: calc(100vw - 51px);
@@ -381,6 +425,10 @@
 }
 
 @media (max-width: 614px) {
+	.mobileFixed {
+		top: 22px;
+	}
+
 	.navigation {
 		--compact-control-height: 34px;
 		gap: 6px;
