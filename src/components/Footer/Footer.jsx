@@ -25,7 +25,7 @@ const Footer = () => {
 					</svg>
 				</a>
 			</nav>
-			<p className={styles.copyright}>© 2026 Maria. All rights reserved.</p>
+			<p className={styles.copyright}>© 2026 maria.dev. All rights reserved.</p>
 		</footer>
 	);
 };
