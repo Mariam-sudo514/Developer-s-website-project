@@ -7,6 +7,8 @@ import { themeInitScript } from '@/lib/theme.mjs';
 import styles from './_styles/Layout.module.css';
 import './_styles/reset.css';
 
+import { Analytics } from "@vercel/analytics/next";
+
 import BackgroundDecor from '@/components/BackgroundDecor/BackgroundDecor';
 import { Inter, Montserrat } from 'next/font/google';
 
@@ -44,6 +46,7 @@ export default function RootLayout({ children }) {
 					<Footer />
 				</div>
 				<ScrollToTop />
+				<Analytics />
 			</body>
 		</html>
 	);
